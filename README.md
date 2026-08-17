@@ -1,8 +1,8 @@
 # AURA — Accessibility Unified Reporting & Analysis
 
-![AURA Banner](https://github.com/itismohan/aura/assets/aura-banner.png)
+![AURA Banner](assets/aura-banner.png)
 
-AURA is an enterprise-oriented accessibility compliance platform for evidence-backed URL, document, and authenticated workflow scanning. It combines a Signal Ledger-inspired dashboard with persisted scan findings, detailed remediation workflows, and immutable report exports.
+AURA is an enterprise-oriented accessibility compliance platform for evidence-backed URL, document, and authenticated workflow scanning. It combines a Signal Ledger-inspired dashboard with persiste[...]
 
 > AURA reports potential accessibility barriers and supports remediation workflows. It does not certify legal compliance or replace a qualified accessibility review.
 
@@ -36,7 +36,7 @@ AURA is an enterprise-oriented accessibility compliance platform for evidence-ba
 
 ## Technology stack
 
-The project uses React 19, Vite 7, Tailwind CSS 4, Express 4, tRPC 11, Drizzle ORM, MySQL/TiDB, Puppeteer Core, PDFKit, SSE, Vitest, and Manus OAuth. The application is organized as a full-stack web platform with clear separation of concerns:
+The project uses React 19, Vite 7, Tailwind CSS 4, Express 4, tRPC 11, Drizzle ORM, MySQL/TiDB, Puppeteer Core, PDFKit, SSE, Vitest, and Manus OAuth. The application is organized as a full-stack w[...]
 
 ```text
 client/                 React application, dashboard layout, scan console, reports, settings
@@ -51,7 +51,7 @@ storage/                Storage integration helpers
 
 ### Prerequisites
 
-Use Node.js 22 or a compatible current Node release, pnpm 10, a MySQL/TiDB database, and a Chromium executable for authenticated crawl sessions. The managed AURA environment supplies the required data services and OAuth configuration.
+Use Node.js 22 or a compatible current Node release, pnpm 10, a MySQL/TiDB database, and a Chromium executable for authenticated crawl sessions. The managed AURA environment supplies the required [...]
 
 ### Install dependencies
 
@@ -59,7 +59,7 @@ Use Node.js 22 or a compatible current Node release, pnpm 10, a MySQL/TiDB datab
 pnpm install
 ```
 
-The repository includes both `pnpm-lock.yaml` and `package-lock.json` for compatibility with the supported package managers. The validated development workflow uses pnpm. If npm reports a dependency-tree conflict, use `pnpm install` instead.
+The repository includes both `pnpm-lock.yaml` and `package-lock.json` for compatibility with the supported package managers. The validated development workflow uses pnpm. If npm reports a dependen[...]
 
 ### Configure environment
 
@@ -83,7 +83,7 @@ Generate and apply Drizzle migrations with:
 pnpm db:push
 ```
 
-Review generated migration SQL before applying it to a production database. The application persists scan jobs, findings, report snapshots, documents, crawl plans, crawl sessions, crawl page coverage, and audit events.
+Review generated migration SQL before applying it to a production database. The application persists scan jobs, findings, report snapshots, documents, crawl plans, crawl sessions, crawl page cover[...]
 
 ### Run the application
 
@@ -95,9 +95,9 @@ The development server starts the full-stack runtime and Vite through `server/_c
 
 ## Scan workflows
 
-The Scan page starts with the `01 / TARGET` section. Users can submit a normalized public URL, choose an uploaded document, or switch to Website crawl for an authenticated workflow. After submission, the scan engine persists the job and streams live progress events to the client.
+The Scan page starts with the `01 / TARGET` section. Users can submit a normalized public URL, choose an uploaded document, or switch to Website crawl for an authenticated workflow. After submissi[...]
 
-For authenticated crawling, define explicit steps and an approved URL allowlist. Credentials are accepted for one session, retained in memory only, cleared after the crawl lifecycle ends, and excluded from persisted evidence:
+For authenticated crawling, define explicit steps and an approved URL allowlist. Credentials are accepted for one session, retained in memory only, cleared after the crawl lifecycle ends, and exc[...]
 
 ```json
 [
@@ -111,17 +111,17 @@ For authenticated crawling, define explicit steps and an approved URL allowlist.
 ]
 ```
 
-Authenticated crawl restrictions include same-origin navigation, explicit approved URLs, DNS and private-network protection, bounded sessions, no CAPTCHA bypass, cooperative cancellation, and controlled browser-frame streaming for MFA checkpoints.
+Authenticated crawl restrictions include same-origin navigation, explicit approved URLs, DNS and private-network protection, bounded sessions, no CAPTCHA bypass, cooperative cancellation, and con[...]
 
 ## Evidence handling
 
-Each manual crawl step can persist a screenshot reference, selector metadata, and a DOM snippet. DOM capture removes script, style, iframe, object, embed, and related active-content blocks; redacts sensitive form values; and preserves ARIA attributes and semantic markup.
+Each manual crawl step can persist a screenshot reference, selector metadata, and a DOM snippet. DOM capture removes script, style, iframe, object, embed, and related active-content blocks; redac[...]
 
-Evidence is rendered through expandable history cards in the Scan execution console. The UI labels screenshots as sanitized, presents selector metadata in a readable monospace block, and exposes DOM snapshots for manual review.
+Evidence is rendered through expandable history cards in the Scan execution console. The UI labels screenshots as sanitized, presents selector metadata in a readable monospace block, and exposes [...]
 
 ## Reports and exports
 
-The Report page reads persisted report detail and findings. It includes executive summary context, score and severity information, source metadata, detailed issue rows, WCAG principle and criterion mapping, and ADA readiness language.
+The Report page reads persisted report detail and findings. It includes executive summary context, score and severity information, source metadata, detailed issue rows, WCAG principle and criteri[...]
 
 Report language intentionally avoids legal-certification claims. Automated results should be supplemented with manual keyboard, screen-reader, cognitive, content, and interaction review.
 
@@ -133,17 +133,17 @@ pnpm test
 pnpm build
 ```
 
-The validated AURA source currently passes TypeScript checking, the full Vitest suite, and the production client/server build. Tests cover authentication boundaries, URL and document validation, scan lifecycle, finding workflow state transitions, and export rendering.
+The validated AURA source currently passes TypeScript checking, the full Vitest suite, and the production client/server build. Tests cover authentication boundaries, URL and document validation, [...]
 
 ## Production and hosting notes
 
-AURA is currently configured for managed Autoscale hosting. Ordinary URL and document scans fit the current model. Reliable live browser takeover and long-running authenticated Chromium sessions require reserved hosting capacity and are flagged as a release gate for production reliability validation.
+AURA is currently configured for managed Autoscale hosting. Ordinary URL and document scans fit the current model. Reliable live browser takeover and long-running authenticated Chromium sessions [...]
 
-Before publishing, create a project checkpoint in the management interface and use the Publish action. Production secrets must be configured through the project's secret-management workflow. Never commit secrets, API keys, or credentials to the repository.
+Before publishing, create a project checkpoint in the management interface and use the Publish action. Production secrets must be configured through the project's secret-management workflow. Neve[...]
 
 ## MCP and IDE integration
 
-The dashboard Settings page contains the current AURA MCP integration guidance for Cursor, Claude Code, Kiro, and compatible clients. The public beta documents the authenticated MCP contract and available tools.
+The dashboard Settings page contains the current AURA MCP integration guidance for Cursor, Claude Code, Kiro, and compatible clients. The public beta documents the authenticated MCP contract and avail[...]
 
 ## License
 
