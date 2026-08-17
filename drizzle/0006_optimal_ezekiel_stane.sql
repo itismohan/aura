@@ -1,0 +1,1 @@
+ALTER TABLE `scan_jobs` MODIFY COLUMN `status` enum('queued','running','paused','completed','failed','cancelled') NOT NULL DEFAULT 'queued';

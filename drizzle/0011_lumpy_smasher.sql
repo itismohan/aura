@@ -1,0 +1,1 @@
+ALTER TABLE `crawl_step_history` ADD `domSnippet` text;

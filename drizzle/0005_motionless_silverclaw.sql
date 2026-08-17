@@ -1,0 +1,1 @@
+ALTER TABLE `scan_reports` ADD `snapshotJson` text;
